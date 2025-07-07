@@ -5,7 +5,7 @@ from os.path import  join, isdir
 from utils import load_from_folder
 from multiprocess import Pool
 
-problem_count = 0
+problem_count = 0 #does not really work, parallel process break it
 
 def run_script(script: str):
     global problem_count
@@ -31,11 +31,7 @@ def check_if_already_solved(sol_path, problem_name):
         if os.path.exists(problem_sol_path):
             return True
         else:
-            problem_sol_path = os.path.join("main/og_solutions", f"{problem_name}.SOL")
-            if os.path.exists(problem_sol_path):
-                return True
-            else:
-                return False
+            return False
 
 @click.command()
 @click.option('--python-path', 'python_path', type=click.STRING,
